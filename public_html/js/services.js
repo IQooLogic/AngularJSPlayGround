@@ -1,4 +1,4 @@
-angular.module('app.name.services', ['wad.main.controllers_auto'])
+angular.module('app.name.services', [])
         .factory('Interceptor', function ($q) {
             return {
                 response: function (response) {
@@ -29,10 +29,10 @@ angular.module('app.name.services', ['wad.main.controllers_auto'])
                     return $q.reject(response);
                 },
                 request: function (request) {
-
+                    return request || $q.when(request);
                 },
                 requestError: function (request) {
-                    console.log('requestError', request);
+                    return $q.reject(request);
                 }
             };
         });
